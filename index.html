@@ -322,21 +322,22 @@
 
                 <h3>Contact</h3>
                 <img src="assets/img/lines.svg" class="img-lines" alt="lines">
-                <form>
+                <form name="contactme" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="text" name="name" class="form-control mt-x-0" placeholder="Name" required>
+                            <input type="text" id="name" name="name" class="form-control mt-x-0" minlength="5" placeholder="Name" required>
                         </div>
                         <div class="col-sm-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="col-sm-12">
-                            <textarea name="message" id="mesaage" class="form-control" placeholder="Message"
+                            <textarea name="message" id="mesaage" minlength="20" class="form-control" placeholder="Message"
                                 required></textarea>
                         </div>
                     </div>
                     <button href="#" class="btn btn-border" type="submit">Hire Me <span
                             class="glyphicon glyphicon-send"></span></button>
+                        
                 </form>
             </div>
         </section><!-- /.section-form -->
@@ -507,6 +508,19 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwx0v2PwcP7tYfVXlpaKKii8wLGZHhhXs7R9vrT/exec"
+        const form = document.forms['contactme']
+        
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for contacting me..! I will be contact you soon..."))
+            .catch(error => console.error('Error!', error.message))
+        
+
+        })
+      </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
