@@ -1,1 +1,1 @@
-# someronbakuli.github.io
+# https://somerongit.github.io/someronbakuli/
