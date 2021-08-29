@@ -117,8 +117,8 @@
                             quality. I’m currently available for freelance work. If
                             you have a project that you want to get started or think you need my help with something,
                             then get in touch.</p>
-                        <a href="https://www.dropbox.com/s/ceszzbu8e69drt4/SomeronBakuli.pdf?dl=0"
-                            class="btn btn-fill" target="_blank" download>Download my cv</a>
+                        <a href="https://www.dropbox.com/s/ceszzbu8e69drt4/SomeronBakuli.pdf?dl=0" class="btn btn-fill"
+                            target="_blank" download>Download my cv</a>
                     </div>
                 </div>
             </div>
@@ -320,7 +320,7 @@
                 <h3>Contact</h3>
                 <img src="assets/img/lines.svg" class="img-lines" alt="lines">
                 <!-- <h3> Hello! <u id="gfg"></u><h3><br> -->
-                <form name="contactme" method="POST" enctype="multipart/form-data">
+                <form name="contactme" id="open-popup-btn" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" id="name" name="name" class="form-control mt-x-0" minlength="5"
@@ -332,7 +332,7 @@
                         </div>
                         <div class="col-sm-12">
                             <textarea name="message" id="mesaage" minlength="20" class="form-control"
-                                placeholder="Message" required></textarea>
+                                placeholder="Message"  required></textarea>
                         </div>
                     </div>
                     <button href="#" class="btn btn-border" type="submit">Hire Me <span
@@ -518,15 +518,18 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
+
         const scriptURL = "https://script.google.com/macros/s/AKfycbwx0v2PwcP7tYfVXlpaKKii8wLGZHhhXs7R9vrT/exec"
         const form = document.forms['contactme']
 
         form.addEventListener('submit', e => {
+
             e.preventDefault()
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => alert("Thanks for contacting me..! I will be contact you soon..."))
+                .then(response => {alert("Thanks for contacting me..! I will be contact you soon...");
+                document.forms['contactme'].reset();
+            })
                 .catch(error => console.error('Error!', error.message))
-
 
         })
     </script>
