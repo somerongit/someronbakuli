@@ -529,12 +529,15 @@
 
             e.preventDefault()
             document.getElementsByName("sendButton").disabled = true;
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: "cors", headers: { 'Access-Control-Allow-Origin': '*' } })
                 .then(response => {
                     alert("Thank you for your massage. I will contact you as soon as possible...");
                     document.forms['contactme'].reset();
                 })
-                .catch(error => console.error('Error!', error.message))
+                .catch(error => {
+                    alert("Sorry, we face a problem while devilvering your massage. Please use other form of communication.");
+                    console.error('Error!', error.message)
+                })
 
         })
     </script>
